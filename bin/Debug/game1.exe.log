@@ -1,0 +1,1646 @@
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 100, 92} не полностью лежит внутри изображения-источника {0, 0, 92, 100}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRe0, Thread: 0x3194 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042CE26 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (29):
+
+     27: 
+     28:         //txBitBlt (txDC(), 0, 0, 100, 92, but);
+=>   29:         txTransparentBlt (txDC(), x, y, 100, 92, but, 0, 0, TX_WHITE);
+     30: 
+     31: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (29):
+
+     27: 
+     28:         //txBitBlt (txDC(), 0, 0, 100, 92, but);
+=>   29:         txTransparentBlt (txDC(), x, y, 100, 92, but, 0, 0, TX_WHITE);
+     30: 
+     31: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Dec 16 2021 18:05:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 16 2021 18:05:56
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x24DC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D1CF in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (79):
+
+     77:         if(Car == rightCar || Car == leftCar)
+     78:         {
+=>   79:             txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+     80:         }
+     81:         else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (79):
+
+     77:         if(Car == rightCar || Car == leftCar)
+     78:         {
+=>   79:             txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+     80:         }
+     81:         else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Dec 24 2021 20:09:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 24 2021 20:09:30
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x24DC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D1CF in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (79):
+
+     77:         if(Car == rightCar || Car == leftCar)
+     78:         {
+=>   79:             txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+     80:         }
+     81:         else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (79):
+
+     77:         if(Car == rightCar || Car == leftCar)
+     78:         {
+=>   79:             txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+     80:         }
+     81:         else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Dec 24 2021 20:09:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Dec 24 2021 20:09:29
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x244 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D3C0 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 14 2022 19:14:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 14 2022 19:14:59
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x2D84 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D3C0 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 14 2022 19:15:32, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 14 2022 19:15:35
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x310C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D3C0 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 14 2022 19:16:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 14 2022 19:16:28
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x310C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D3C0 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (111):
+
+    109:             if(Car == rightCar || Car == leftCar)
+    110:             {
+=>  111:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    112:             }
+    113:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 14 2022 19:16:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 14 2022 19:16:28
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x14B4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D415 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (112):
+
+    110:             if(Car == rightCar || Car == leftCar)
+    111:             {
+=>  112:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    113:             }
+    114:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (112):
+
+    110:             if(Car == rightCar || Car == leftCar)
+    111:             {
+=>  112:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    113:             }
+    114:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 14 2022 19:17:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 14 2022 19:17:56
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x2810 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D415 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (112):
+
+    110:             if(Car == rightCar || Car == leftCar)
+    111:             {
+=>  112:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    113:             }
+    114:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (112):
+
+    110:             if(Car == rightCar || Car == leftCar)
+    111:             {
+=>  112:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    113:             }
+    114:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 14 2022 19:18:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 14 2022 19:18:25
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x2810 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423572 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0042D415 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game2/main.cpp (112):
+
+    110:             if(Car == rightCar || Car == leftCar)
+    111:             {
+=>  112:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    113:             }
+    114:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13657):
+
+  13655: 
+  13656: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13657: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13658: 
+  13659:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in int main() at C:\Users\root\source\repos\game2\main.cpp (112):
+
+    110:             if(Car == rightCar || Car == leftCar)
+    111:             {
+=>  112:                 txTransparentBlt (txDC(), xCar, yCar, 200, 94, Car, 0, 0, TX_WHITE);
+    113:             }
+    114:             else if(Car == upCar || Car == downCar)
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 14 2022 19:18:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 14 2022 19:18:25
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 200, 200} не полностью лежит внутри изображения-источника {0, 0, 100, 126}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x37A0 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D0EE in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 200, 200, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 200, 200, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 08:50:37, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 08:50:40
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 220, 220} не полностью лежит внутри изображения-источника {0, 0, 100, 126}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x38A4 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D0EE in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 220, 220, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 220, 220, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 08:52:00, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 08:52:03
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 200, 200} не полностью лежит внутри изображения-источника {0, 0, 100, 126}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x18EC (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D0EE in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 200, 200, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 200, 200, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 09:09:42, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 09:09:45
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 200, 200} не полностью лежит внутри изображения-источника {0, 0, 100, 126}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x18EC (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D0EE in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 200, 200, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (49):
+
+     47:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     48: 
+=>   49:         txTransparentBlt (txDC(), 500, 300, 200, 200, mario, 0, 0, TX_WHITE);
+     50: 
+     51: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 09:09:42, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 09:09:45
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {3300, 0, 3520, 220} не полностью лежит внутри изображения-источника {0, 0, 3488, 220}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x3FB4 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D114 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 500, 100, 220, 220, bat2, 220 * frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 500, 100, 220, 220, bat2, 220 * frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 09:16:37, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 09:16:40
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {3520, 0, 3740, 220} не полностью лежит внутри изображения-источника {0, 0, 3524, 220}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x30D4 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D114 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 500, 100, 220, 220, bat2, 220 * frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 500, 100, 220, 220, bat2, 220 * frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 09:21:24, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 09:21:27
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {3520, 0, 3740, 220} не полностью лежит внутри изображения-источника {0, 0, 3524, 220}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x30D4 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D114 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 500, 100, 220, 220, bat2, 220 * frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 500, 100, 220, 220, bat2, 220 * frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 09:21:24, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 09:21:27
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {3520, 0, 3740, 200} не полностью лежит внутри изображения-источника {0, 0, 3524, 220}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005062FC (32-bit), Flags: CMdRE0, Thread: 0x2FF8 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D114 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 600, 100, 220, 200, bat2, 220*frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (50):
+
+     48:         txTransparentBlt (txDC(), xMario, yMario, 100, 126, mario, 0, 0, TX_WHITE);
+     49: 
+=>   50:         txTransparentBlt (txDC(), 600, 100, 220, 200, bat2, 220*frame, 0, TX_WHITE);
+     51: 
+     52:         frame++;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 17:50:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 17:50:38
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 100, 159} не полностью лежит внутри изображения-источника {0, 0, 100, 126}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x4098 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D0E0 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (52):
+
+     50:         txBitBlt (txDC(), 0, 0, 1200, 600, Fon);
+     51: 
+=>   52:         txTransparentBlt (txDC(), xMario, yMario, 100, 159, mario, 100 * frameMario, 0, TX_WHITE);
+     53: 
+     54:         frameMario++;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (52):
+
+     50:         txBitBlt (txDC(), 0, 0, 1200, 600, Fon);
+     51: 
+=>   52:         txTransparentBlt (txDC(), xMario, yMario, 100, 159, mario, 100 * frameMario, 0, TX_WHITE);
+     53: 
+     54:         frameMario++;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 18:09:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 18:09:30
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {100, 0, 200, 159} не полностью лежит внутри изображения-источника {0, 0, 100, 126}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x4098 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D0E0 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (52):
+
+     50:         txBitBlt (txDC(), 0, 0, 1200, 600, Fon);
+     51: 
+=>   52:         txTransparentBlt (txDC(), xMario, yMario, 100, 159, mario, 100 * frameMario, 0, TX_WHITE);
+     53: 
+     54:         frameMario++;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (52):
+
+     50:         txBitBlt (txDC(), 0, 0, 1200, 600, Fon);
+     51: 
+=>   52:         txTransparentBlt (txDC(), xMario, yMario, 100, 159, mario, 100 * frameMario, 0, TX_WHITE);
+     53: 
+     54:         frameMario++;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 18:09:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 18:09:29
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe, файл: c:\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {200, 0, 300, 159} не полностью лежит внутри изображения-источника {0, 0, 100, 126}, функция txTransparentBlt() работать не будет.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x4098 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423796 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: txTransparentBlt() at c:/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042D0E0 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (52):
+
+     50:         txBitBlt (txDC(), 0, 0, 1200, 600, Fon);
+     51: 
+=>   52:         txTransparentBlt (txDC(), xMario, yMario, 100, 159, mario, 100 * frameMario, 0, TX_WHITE);
+     53: 
+     54:         frameMario++;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%lg, %lg, %lg, %lg} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at C:\Users\root\source\repos\game1\main.cpp (52):
+
+     50:         txBitBlt (txDC(), 0, 0, 1200, 600, Fon);
+     51: 
+=>   52:         txTransparentBlt (txDC(), xMario, yMario, 100, 159, mario, 100 * frameMario, 0, TX_WHITE);
+     53: 
+     54:         frameMario++;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 20 2022 18:09:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 20 2022 18:09:30
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D4A1 в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x250 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D4A1 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+=>  105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+    105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 17:55:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 17:56:00
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D4A1 в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x250 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D4A1 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+=>  105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+    105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 17:55:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 17:56:00
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D4A1 в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x1048 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D4A1 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+=>  105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+    105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 17:57:21, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 17:57:26
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D4A1 в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x1048 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D4A1 in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+=>  105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[kol-1].x, bullet[kol-1].y, 5);
+    105:                 bullet[kol-1].x=bullet[kol-1].x+bullet[kol-1].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 17:57:21, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 17:57:26
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D48F в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x2768 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D48F in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+=>  105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+    105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 18:00:05, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 18:00:09
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D48F в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x2768 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D48F in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+=>  105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+    105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 18:00:05, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 18:00:09
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D48F в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x284 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D48F in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+=>  105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+    105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 18:21:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 18:22:02
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\root\source\repos\game1\bin\Debug\game1.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Недопустимая операция с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_INVALID_OPERATION (0xC0000090) при выполнении кода по адресу 0x0042D48F в функции main() в файле C:/Users/root/source/repos/game1/main.cpp на строке 105 в модуле C:\Users\root\source\repos\game1\bin\Debug\game1.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRE0, Thread: 0x284 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042D48F in C:\Users\root\source\repos\game1\bin\Debug\game1.exe: main() at C:/Users/root/source/repos/game1/main.cpp (105):
+
+    103:                 txSetColor(TX_WHITE,3);
+    104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+=>  105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+    107:                 /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\root\source\repos\game1\main.cpp (104):
+
+    102:             {
+    103:                 txSetColor(TX_WHITE,3);
+=>  104:                 txCircle(bullet[i].x, bullet[i].y, 5);
+    105:                 bullet[i].x=bullet[i].x+bullet[i].v;
+    106: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2021-07-19 01:45:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  8 2022 18:21:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 08 2022 18:22:03
+
+Run file:	C:\Users\root\source\repos\game1\bin\Debug\game1.exe
+Directory:	C:\Users\root\source\repos\game1
+
+--------------------------------------------------
